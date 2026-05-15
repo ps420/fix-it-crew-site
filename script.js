@@ -1,4 +1,5 @@
 const BUSINESS_CONFIG = {
+  // Replace business details here
   businessName: 'Fix-It Crew', // Replace business name here
   phoneRaw: '+27XXXXXXXXX', // Replace with real phone number for click-to-call
   phoneDisplay: '+27 XX XXX XXXX', // Replace with real visible phone number
@@ -8,18 +9,31 @@ const BUSINESS_CONFIG = {
   serviceArea: 'Johannesburg and surrounding areas', // Replace if needed
   serviceAreaShort: 'Johannesburg',
   businessHours: 'Mon - Sat: 7:00 AM - 6:00 PM<br />Emergency call-outs available',
+  businessHoursText: 'Mon - Sat: 7:00 AM - 6:00 PM',
+  googleMapsUrl: 'https://maps.google.com/?q=Johannesburg', // Replace with your real map pin/link
+  socialLinks: {
+    facebook: '#', // Replace social link later
+    instagram: '#', // Replace social link later
+    linkedin: '#', // Replace social link later
+  },
 };
 
 const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.site-nav');
+const navLinks = document.querySelectorAll('.site-nav a');
+const sectionLinks = new Map();
 
 if (navToggle && nav) {
   navToggle.addEventListener('click', () => {
     nav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(nav.classList.contains('open')));
   });
 
   nav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => nav.classList.remove('open'));
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
   });
 }
 
@@ -45,6 +59,9 @@ function applyBusinessConfig() {
   document.querySelectorAll('[data-config="businessHours"]').forEach((node) => {
     node.innerHTML = BUSINESS_CONFIG.businessHours;
   });
+  document.querySelectorAll('[data-config="businessHoursText"]').forEach((node) => {
+    node.textContent = BUSINESS_CONFIG.businessHoursText;
+  });
 
   document.querySelectorAll('[data-link="phone"]').forEach((node) => {
     node.setAttribute('href', `tel:${BUSINESS_CONFIG.phoneRaw}`);
@@ -55,6 +72,38 @@ function applyBusinessConfig() {
   document.querySelectorAll('[data-link="whatsapp"]').forEach((node) => {
     node.setAttribute('href', `https://wa.me/${BUSINESS_CONFIG.whatsAppNumber}`);
   });
+  document.querySelectorAll('[data-link="maps"]').forEach((node) => {
+    node.setAttribute('href', BUSINESS_CONFIG.googleMapsUrl);
+  });
+  Object.entries(BUSINESS_CONFIG.socialLinks).forEach(([key, value]) => {
+    document.querySelectorAll(`[data-link="${key}"]`).forEach((node) => {
+      node.setAttribute('href', value);
+    });
+  });
+}
+
+function setActiveNav() {
+  const sections = Array.from(document.querySelectorAll('main section[id]'));
+  if (!sections.length || !navLinks.length) return;
+
+  navLinks.forEach((link) => {
+    const id = link.getAttribute('href')?.replace('#', '');
+    if (id) sectionLinks.set(id, link);
+  });
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => link.classList.remove('active'));
+        const activeLink = sectionLinks.get(entry.target.id);
+        if (activeLink) activeLink.classList.add('active');
+      });
+    },
+    { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 }
+  );
+
+  sections.forEach((section) => sectionObserver.observe(section));
 }
 
 const revealItems = document.querySelectorAll('.reveal');
@@ -167,6 +216,12 @@ function syncLinks() {
 }
 
 applyBusinessConfig();
+setActiveNav();
+
+const currentYear = document.querySelector('#currentYear');
+if (currentYear) {
+  currentYear.textContent = String(new Date().getFullYear());
+}
 
 if (quoteForm && whatsAppQuoteLink && emailQuoteLink) {
   quoteForm.addEventListener('input', syncLinks);

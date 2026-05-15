@@ -21,8 +21,10 @@
     <meta property="og:type" content="website" />
     <!-- Replace with your real domain later -->
     <meta property="og:url" content="https://www.fixitcrew.co.za" />
+    <!-- Replace og-image.jpg with your real branded preview image later -->
     <meta property="og:image" content="https://www.fixitcrew.co.za/og-image.jpg" />
     <meta property="og:site_name" content="Fix-It Crew" />
+    <meta property="og:locale" content="en_ZA" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Fix-It Crew | Premium Maintenance & Construction Johannesburg" />
     <meta
@@ -30,6 +32,7 @@
       content="Professional maintenance, repairs, renovations, and construction services in Johannesburg."
     />
     <meta name="twitter:image" content="https://www.fixitcrew.co.za/og-image.jpg" />
+    <link rel="canonical" href="https://www.fixitcrew.co.za" />
     <link
       rel="icon"
       type="image/svg+xml"
@@ -61,10 +64,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260515-1455" />
   </head>
   <body>
-    <!-- Contact links are auto-filled from editable constants in script.js -->
+    <!-- Business details, social links, and contact links are auto-filled from editable constants in script.js -->
     <a class="floating-whatsapp" data-link="whatsapp" href="https://wa.me/27XXXXXXXXX" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
       <span>WhatsApp</span>
     </a>
@@ -75,6 +78,7 @@
       <div class="container nav-wrap">
         <a href="#home" class="brand">
           <span class="brand-mark" aria-hidden="true">
+            <!-- Replace this inline SVG later if you have a final logo mark -->
             <svg viewBox="0 0 64 64" role="img" aria-label="Fix-It Crew brand icon">
               <defs>
                 <linearGradient id="brandGold" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -93,9 +97,9 @@
           </span>
         </a>
 
-        <button class="nav-toggle" aria-label="Open menu">☰</button>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">☰</button>
 
-        <nav class="site-nav">
+        <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
           <a href="#home">Home</a>
           <a href="#services">Services</a>
           <a href="#about">About</a>
@@ -108,33 +112,44 @@
 
     <main>
       <section class="hero" id="home">
+        <div class="hero-overlay-lines" aria-hidden="true"></div>
         <div class="container hero-grid">
           <div class="hero-copy reveal">
-            <p class="eyebrow">Premium contractor. Strong results. Trusted service.</p>
-            <h1>Reliable Maintenance &amp; Construction in Johannesburg</h1>
+            <p class="eyebrow">Johannesburg maintenance and construction specialists</p>
+            <h1>Premium maintenance, repairs, and renovations for Johannesburg properties</h1>
             <p class="hero-text">
-              From urgent repairs and renovations to full-scale construction support, Fix-It Crew delivers premium workmanship, dependable communication, and results built to last.
+              Fix-It Crew delivers professional workmanship for homes, rentals, offices, and commercial spaces with dependable communication, neat execution, and quote-ready service you can trust.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-gold glow" href="#contact">Get a Free Quote</a>
+              <a class="btn btn-gold glow" href="#contact">Request a Free Quote</a>
               <a class="btn btn-outline" data-link="whatsapp" href="https://wa.me/27XXXXXXXXX" target="_blank" rel="noreferrer">WhatsApp Us</a>
+              <a class="btn btn-outline-dark" data-link="phone" href="tel:+27XXXXXXXXX">Call Now</a>
             </div>
             <ul class="hero-points">
-              <li>Fast response across Johannesburg</li>
-              <li>Trusted workmanship for residential and commercial jobs</li>
-              <li>Clean finishes, honest service, and dependable follow-through</li>
+              <li>Fast quote support for homes, rentals, offices, and commercial spaces</li>
+              <li>Reliable workmanship for repairs, upgrades, and scheduled maintenance</li>
+              <li>Clear communication from first contact to final handover</li>
             </ul>
             <div class="trust-badges">
               <span>Fast Quote Response</span>
-              <span>Premium Workmanship</span>
+              <span>Clean, Professional Finishes</span>
               <span>Johannesburg Coverage</span>
+            </div>
+            <div class="hero-contact-strip">
+              <a data-link="phone" href="tel:+27XXXXXXXXX">Call: <span data-config="phoneDisplay">+27 XX XXX XXXX</span></a>
+              <a data-link="email" href="mailto:info@fixitcrew.co.za">Email: <span data-config="email">info@fixitcrew.co.za</span></a>
+            </div>
+            <div class="hero-trust-stats reveal delay-1">
+              <div><strong>Fast</strong><span>quote turnaround</span></div>
+              <div><strong>Neat</strong><span>professional finishes</span></div>
+              <div><strong>Local</strong><span>Johannesburg service team</span></div>
             </div>
           </div>
 
           <div class="hero-visual reveal delay-1">
             <div class="hero-bg-grid" aria-hidden="true"></div>
             <div class="glass-card card-main pulse-soft">
-              <p>Built for homes, offices, estates, retail spaces, and emergency call-outs.</p>
+              <p>Trusted support for homes, offices, complexes, retail spaces, and urgent maintenance call-outs.</p>
               <div class="stat-row">
                 <div>
                   <strong>11+</strong>
@@ -154,7 +169,7 @@
               <div class="placeholder-visual tools-visual">
                 <span class="visual-badge">Premium project visual</span>
               </div>
-              <span>Luxury before / after showcase space</span>
+              <span>Before-and-after project feature slot</span>
             </div>
             <div class="hero-orbit orbit-one"></div>
             <div class="hero-orbit orbit-two"></div>
@@ -176,8 +191,8 @@
         <div class="container">
           <div class="section-head reveal">
             <p class="eyebrow">Why Choose Us</p>
-            <h2>Premium contractor energy, practical contractor reliability</h2>
-            <p>Fix-It Crew is designed to feel modern and premium, but the real value is simple: strong workmanship, clear communication, and dependable service from quote to completion.</p>
+            <h2>Professional presentation backed by practical, dependable service</h2>
+            <p>Fix-It Crew gives clients confidence with responsive communication, neat workmanship, and a straightforward approach to repairs, maintenance, and construction support.</p>
           </div>
           <div class="why-grid">
             <article class="why-card reveal"><div class="icon-badge">🛠</div><h3>Work done properly</h3><p>Quality-focused repairs, upgrades, and finishes without cutting corners.</p></article>
@@ -192,25 +207,25 @@
         <div class="container">
           <div class="section-head reveal">
             <p class="eyebrow">Services</p>
-            <h2>Built for the repairs, upgrades, and projects that matter</h2>
+            <h2>Maintenance and construction services for homes, rentals, and business properties</h2>
             <p>
               <!-- You can replace or expand this service intro later -->
-              We handle day-to-day maintenance, emergency call-outs, and full upgrade work with a premium, dependable approach.
+              From routine repairs to renovation support, Fix-It Crew focuses on practical solutions, tidy execution, and work that holds up over time.
             </p>
           </div>
 
           <div class="service-grid">
-            <article class="service-card premium-card reveal"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M4 18l6-6 2 2-6 6H4zm9.5-11.5l2-2a2.1 2.1 0 013 3l-2 2-3-3zM11 6l7 7"/></svg> </div><h3>General maintenance</h3><p>Reliable repairs and property upkeep for homes, offices, complexes, and rental units.</p></article>
-            <article class="service-card premium-card reveal delay-1"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-6h6v6"/></svg> </div><h3>Renovations</h3><p>Kitchen, bathroom, room, and interior upgrades handled with structure and finish in mind.</p></article>
-            <article class="service-card premium-card reveal delay-2"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M14 4l6 6M13 5l-8 8v4h4l8-8M12 6l6 6"/></svg> </div><h3>Painting</h3><p>Interior and exterior painting with proper prep, clean lines, and a polished final result.</p></article>
-            <article class="service-card premium-card reveal"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M14 4a4 4 0 014 4c0 4-6 10-6 10S6 12 6 8a4 4 0 018 0zM12 9h.01"/></svg> </div><h3>Plumbing</h3><p>Leaks, fittings, repairs, and practical maintenance solutions delivered professionally.</p></article>
-            <article class="service-card premium-card reveal delay-1"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M13 2L6 14h5l-1 8 7-12h-5l1-8z"/></svg> </div><h3>Electrical repairs</h3><p>Support for electrical faults, fittings, and essential repair work with a dependable approach.</p></article>
-            <article class="service-card premium-card reveal delay-2"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M4 14l8-8 8 8M6 12h12M8 20l1-6h6l1 6"/></svg> </div><h3>Roofing</h3><p>Roof repairs, waterproofing, storm damage support, and ongoing roofing maintenance.</p></article>
-            <article class="service-card premium-card reveal"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg> </div><h3>Tiling</h3><p>Floor and wall tiling done neatly for kitchens, bathrooms, living spaces, and more.</p></article>
-            <article class="service-card premium-card reveal delay-1"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M4 18h16M6 18V8h12v10M9 8V5h6v3"/></svg> </div><h3>Ceiling &amp; drywall</h3><p>Ceiling repairs, partitions, drywall finishing, and interior upgrade work.</p></article>
-            <article class="service-card premium-card reveal delay-2"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M4 20l8-8M14 6l4 4M13 7l-7 7 4 4 7-7-4-4z"/></svg> </div><h3>Carpentry</h3><p>Built-ins, timber fixes, trim work, and custom carpentry details that elevate a space.</p></article>
-            <article class="service-card premium-card reveal"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 5-5 4 4M3 21h18"/></svg> </div><h3>Paving</h3><p>Driveways, walkways, outdoor surfaces, and durable paving solutions that last.</p></article>
-            <article class="service-card premium-card reveal delay-1"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M12 3l9 16H3L12 3zm0 6v4m0 4h.01"/></svg> </div><h3>Emergency repairs</h3><p>Urgent response for damage, faults, leaks, and unexpected issues that need fast action.</p></article>
+            <article class="service-card premium-card reveal"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M4 18l6-6 2 2-6 6H4zm9.5-11.5l2-2a2.1 2.1 0 013 3l-2 2-3-3zM11 6l7 7"/></svg> </div><span class="service-tag">Property care</span><h3>General maintenance</h3><p>Professional upkeep and repairs for homes, offices, rentals, and commercial spaces.</p></article>
+            <article class="service-card premium-card reveal delay-1"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-6h6v6"/></svg> </div><span class="service-tag">Upgrade work</span><h3>Renovations</h3><p>Smart renovation support for kitchens, bathrooms, interiors, and practical layout upgrades.</p></article>
+            <article class="service-card premium-card reveal delay-2"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M14 4l6 6M13 5l-8 8v4h4l8-8M12 6l6 6"/></svg> </div><span class="service-tag">Finishing</span><h3>Painting</h3><p>Clean interior and exterior painting with proper prep, tidy edges, and polished results.</p></article>
+            <article class="service-card premium-card reveal"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M14 4a4 4 0 014 4c0 4-6 10-6 10S6 12 6 8a4 4 0 018 0zM12 9h.01"/></svg> </div><span class="service-tag">Repair support</span><h3>Plumbing</h3><p>Leaks, fittings, plumbing repairs, and maintenance work handled with a practical approach.</p></article>
+            <article class="service-card premium-card reveal delay-1"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M13 2L6 14h5l-1 8 7-12h-5l1-8z"/></svg> </div><span class="service-tag">Essential systems</span><h3>Electrical repairs</h3><p>Faults, fittings, and repair support delivered with care and dependable coordination.</p></article>
+            <article class="service-card premium-card reveal delay-2"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M4 14l8-8 8 8M6 12h12M8 20l1-6h6l1 6"/></svg> </div><span class="service-tag">Protection</span><h3>Roofing</h3><p>Roof repairs, waterproofing, storm-related fixes, and maintenance that protects property value.</p></article>
+            <article class="service-card premium-card reveal"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg> </div><span class="service-tag">Surface finish</span><h3>Tiling</h3><p>Wall and floor tiling installed neatly for kitchens, bathrooms, living areas, and exteriors.</p></article>
+            <article class="service-card premium-card reveal delay-1"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M4 18h16M6 18V8h12v10M9 8V5h6v3"/></svg> </div><span class="service-tag">Interior build</span><h3>Ceiling &amp; drywall</h3><p>Partitions, ceilings, repairs, and interior finishing for cleaner, more usable spaces.</p></article>
+            <article class="service-card premium-card reveal delay-2"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M4 20l8-8M14 6l4 4M13 7l-7 7 4 4 7-7-4-4z"/></svg> </div><span class="service-tag">Custom detail</span><h3>Carpentry</h3><p>Built-ins, trim, repair work, and practical custom timber details that finish a space properly.</p></article>
+            <article class="service-card premium-card reveal"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 5-5 4 4M3 21h18"/></svg> </div><span class="service-tag">Outdoor work</span><h3>Paving</h3><p>Driveways, walkways, and exterior upgrades designed for durability, neatness, and curb appeal.</p></article>
+            <article class="service-card premium-card reveal delay-1"><div class="service-icon"> <svg viewBox="0 0 24 24"><path d="M12 3l9 16H3L12 3zm0 6v4m0 4h.01"/></svg> </div><span class="service-tag">Urgent help</span><h3>Emergency repairs</h3><p>Fast response for leaks, damage, failures, and urgent maintenance issues that need attention.</p></article>
           </div>
         </div>
       </section>
@@ -219,12 +234,12 @@
         <div class="container about-grid">
           <div class="about-copy reveal">
             <p class="eyebrow">About Fix-It Crew</p>
-            <h2>Modern contractor mindset. Old-school reliability.</h2>
+            <h2>A Johannesburg team focused on workmanship, communication, and reliable follow-through</h2>
             <p>
-              Fix-It Crew is a Johannesburg-based maintenance and construction business focused on dependable service, practical solutions, and quality workmanship.
+              Fix-It Crew is built for clients who want a contractor that shows up on time, handles the job professionally, and keeps the process clear from quote to completion.
             </p>
             <p>
-              We believe clients want more than just someone to do the job — they want a team that shows up, communicates clearly, works neatly, and delivers results they can trust.
+              Whether the work is a repair, upgrade, or renovation phase, the goal stays the same: do the work properly, keep the site neat, and leave the client confident in the result.
             </p>
             <div class="about-checks">
               <div>Dependable service</div>
@@ -255,41 +270,47 @@
         <div class="container">
           <div class="section-head reveal">
             <p class="eyebrow">Gallery / Projects</p>
-            <h2>Show the work. Build trust fast.</h2>
+            <h2>Project photos that help clients trust the quality of your work</h2>
             <p>
-              <!-- Replace these placeholders with real project photos later -->
-              This section is prepared for project images, before-and-after shots, renovations, roofing jobs, and completed maintenance work.
+              <!-- Replace these placeholders with real gallery images later -->
+              Use this section to show completed repairs, renovations, roofing work, tiling, painting, and clean before-and-after transformations.
             </p>
           </div>
 
-          <div class="gallery-grid">
-            <div class="gallery-card reveal">
-              <div class="image-placeholder project-one"><span>Project Image Placeholder</span></div>
-              <span>Luxury project showcase 01</span><small>Renovation / maintenance feature space</small>
+          <div class="gallery-grid masonry-grid">
+            <div class="gallery-card gallery-card-large reveal">
+              <!-- Replace this placeholder with a real gallery image later -->
+              <div class="image-placeholder project-one"><span>Project photo placeholder</span></div>
+              <span>Renovation and repair showcase</span><small>Ideal for a high-quality completed project image</small>
             </div>
             <div class="gallery-card reveal delay-1">
-              <div class="image-placeholder project-two"><span>Project Image Placeholder</span></div>
-              <span>Luxury project showcase 02</span><small>Kitchen, bathroom, or painting project</small>
+              <!-- Replace this placeholder with a real gallery image later -->
+              <div class="image-placeholder project-two"><span>Project photo placeholder</span></div>
+              <span>Kitchen, bathroom, or painting project</span><small>Use a clean finished result that shows detail and neatness</small>
             </div>
             <div class="gallery-card reveal delay-2">
-              <div class="image-placeholder project-three"><span>Project Image Placeholder</span></div>
-              <span>Luxury project showcase 03</span><small>Roofing / tiling / carpentry feature</small>
+              <!-- Replace this placeholder with a real gallery image later -->
+              <div class="image-placeholder project-three"><span>Project photo placeholder</span></div>
+              <span>Roofing, tiling, or carpentry project</span><small>Great for a clear workmanship-focused photo</small>
             </div>
-            <div class="gallery-card gallery-split reveal">
+            <div class="gallery-card gallery-split gallery-card-wide reveal">
+              <!-- Replace these before/after placeholders with real progress images later -->
               <div class="split-header"><strong>Before</strong><strong>After</strong></div>
               <div class="before-after-grid">
-                <div class="image-placeholder before-box"><span>Before</span></div>
-                <div class="image-placeholder after-box"><span>After</span></div>
+                <div class="image-placeholder before-box"><span>Before photo</span></div>
+                <div class="image-placeholder after-box"><span>After photo</span></div>
               </div>
-              <small>Ideal for dramatic repair or renovation comparisons</small>
+              <small>Ideal for repairs, makeovers, and renovation turnaround shots</small>
             </div>
             <div class="gallery-card reveal delay-1">
-              <div class="image-placeholder project-five"><span>Project Image Placeholder</span></div>
-              <span>Luxury project showcase 05</span><small>Commercial or residential work</small>
+              <!-- Replace this placeholder with a real gallery image later -->
+              <div class="image-placeholder project-five"><span>Project photo placeholder</span></div>
+              <span>Commercial or residential maintenance</span><small>Good spot for a site photo that shows scale and professionalism</small>
             </div>
             <div class="gallery-card reveal delay-2">
-              <div class="image-placeholder project-six"><span>Project Image Placeholder</span></div>
-              <span>Luxury project showcase 06</span><small>Paving / exterior upgrade / finishing work</small>
+              <!-- Replace this placeholder with a real gallery image later -->
+              <div class="image-placeholder project-six"><span>Project photo placeholder</span></div>
+              <span>Paving, exterior upgrades, or finishing work</span><small>Use a strong outdoor result photo here</small>
             </div>
           </div>
         </div>
@@ -323,25 +344,28 @@
         <div class="container">
           <div class="section-head reveal">
             <p class="eyebrow">Client Reviews</p>
-            <h2>Premium feel starts with trust</h2>
-            <p><!-- Replace these with real testimonials later -->Use this section for real Google/WhatsApp/client feedback once available.</p>
+            <h2>Client feedback that reinforces trust and professionalism</h2>
+            <p><!-- Replace these review placeholders with real testimonials later -->Use short, believable testimonials from real clients, ideally mentioning workmanship, communication, and turnaround time.</p>
           </div>
 
           <div class="review-grid">
             <article class="review-card reveal">
+              <!-- Replace this review with a real testimonial later -->
               <div class="stars">★★★★★</div>
-              <p>“Excellent workmanship, professional attitude, and the job was done properly from start to finish.”</p>
-              <strong>Client Name Placeholder</strong>
+              <p>“Excellent workmanship, professional attitude, and the job was completed neatly from start to finish.”</p>
+              <div class="review-meta"><strong>Client name / suburb</strong><span>Residential client</span></div>
             </article>
             <article class="review-card reveal delay-1">
+              <!-- Replace this review with a real testimonial later -->
               <div class="stars">★★★★★</div>
-              <p>“Quick response, neat work, and very reliable. I’d definitely use Fix-It Crew again.”</p>
-              <strong>Client Name Placeholder</strong>
+              <p>“Quick response, neat work, and very reliable. The whole process felt professional and well managed.”</p>
+              <div class="review-meta"><strong>Client name / suburb</strong><span>Maintenance client</span></div>
             </article>
             <article class="review-card reveal delay-2">
+              <!-- Replace this review with a real testimonial later -->
               <div class="stars">★★★★★</div>
-              <p>“Good communication, honest pricing, and a modern professional feel throughout the project.”</p>
-              <strong>Client Name Placeholder</strong>
+              <p>“Good communication, honest pricing, and quality workmanship. I would confidently recommend Fix-It Crew.”</p>
+              <div class="review-meta"><strong>Client name / suburb</strong><span>Renovation client</span></div>
             </article>
           </div>
         </div>
@@ -351,19 +375,22 @@
         <div class="container contact-grid">
           <div class="contact-copy reveal">
             <p class="eyebrow">Contact</p>
-            <h2>Request a quote or message the team</h2>
+            <h2>Request a quote, call the team, or send a WhatsApp now</h2>
             <p>
-              Ready to get started? Call, WhatsApp, or send your details below and Fix-It Crew can get back to you.
+              Ready to move forward? Use the contact options below for quick help, quote requests, or to discuss your next repair, renovation, or maintenance job.
             </p>
             <div class="contact-cards">
+              <!-- Replace phone number in script.js BUSINESS_CONFIG.phoneRaw and phoneDisplay -->
               <a class="contact-card" data-link="phone" href="tel:+27XXXXXXXXX">
                 <strong>Phone</strong>
                 <span data-config="phoneDisplay">+27 XX XXX XXXX</span>
               </a>
+              <!-- Replace WhatsApp number in script.js BUSINESS_CONFIG.whatsAppNumber and whatsAppDisplay -->
               <a class="contact-card" data-link="whatsapp" href="https://wa.me/27XXXXXXXXX" target="_blank" rel="noreferrer">
                 <strong>WhatsApp</strong>
                 <span data-config="whatsAppDisplay">+27 XX XXX XXXX</span>
               </a>
+              <!-- Replace email in script.js BUSINESS_CONFIG.email -->
               <a class="contact-card" data-link="email" href="mailto:info@fixitcrew.co.za">
                 <strong>Email</strong>
                 <span data-config="email">info@fixitcrew.co.za</span>
@@ -372,6 +399,7 @@
                 <strong>Service Area</strong>
                 <span data-config="serviceArea">Johannesburg and surrounding areas</span>
               </div>
+              <!-- Replace business hours in script.js BUSINESS_CONFIG.businessHours -->
               <div class="contact-card">
                 <strong>Business Hours</strong>
                 <span data-config="businessHours">Mon - Sat: 7:00 AM - 6:00 PM<br />Emergency call-outs available</span>
@@ -381,6 +409,12 @@
               <a class="btn btn-gold glow" data-link="phone" href="tel:+27XXXXXXXXX">Call the Team</a>
               <a class="btn btn-outline" data-link="email" href="mailto:info@fixitcrew.co.za">Email Us</a>
               <a class="btn btn-outline" data-link="whatsapp" href="https://wa.me/27XXXXXXXXX" target="_blank" rel="noreferrer">WhatsApp Us</a>
+            </div>
+            <div class="map-card reveal delay-1">
+              <strong>Johannesburg coverage map</strong>
+              <p>Use this block for a future embedded map or branded map screenshot.</p>
+              <!-- Replace maps link in script.js BUSINESS_CONFIG.googleMapsUrl -->
+              <a class="btn btn-outline-dark" data-link="maps" href="https://maps.google.com/?q=Johannesburg" target="_blank" rel="noreferrer">Open Google Maps</a>
             </div>
           </div>
 
@@ -440,7 +474,7 @@
               </label>
             </div>
             <button type="submit" class="btn btn-gold glow btn-block">Request Quote via WhatsApp</button>
-            <!-- Replace WhatsApp number and email later -->
+            <!-- Replace WhatsApp number, phone, and email in script.js BUSINESS_CONFIG -->
             <a id="whatsAppQuoteLink" class="btn btn-outline btn-block" href="https://wa.me/27XXXXXXXXX" target="_blank" rel="noreferrer">Open WhatsApp Quote</a>
             <a id="emailQuoteLink" class="btn btn-outline btn-block" href="mailto:info@fixitcrew.co.za?subject=Fix-It%20Crew%20Quote%20Request">Email Quote Instead</a>
           </form>
@@ -450,22 +484,45 @@
 
     <footer class="site-footer">
       <div class="container footer-wrap">
-        <div>
+        <div class="footer-brand-block">
           <strong data-config="businessName">Fix-It Crew</strong>
-          <p>Maintenance company Johannesburg | Construction services Johannesburg | Home repairs Johannesburg | Handyman Johannesburg</p>
+          <p>Maintenance company Johannesburg | Construction services Johannesburg | home repairs Johannesburg | renovations Johannesburg | handyman Johannesburg</p>
+          <p class="footer-hours"><strong>Business hours:</strong> <span data-config="businessHoursText">Mon - Sat: 7:00 AM - 6:00 PM</span></p>
         </div>
-        <div class="footer-links">
-          <a href="#home">Home</a>
-          <a href="#services">Services</a>
-          <a href="#about">About</a>
-          <a href="#gallery">Projects</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#areas">Areas We Serve</a>
-          <a href="#contact">Contact</a>
+        <div class="footer-columns">
+          <div>
+            <strong>Quick Links</strong>
+            <div class="footer-links">
+              <a href="#home">Home</a>
+              <a href="#services">Services</a>
+              <a href="#about">About</a>
+              <a href="#gallery">Projects</a>
+              <a href="#reviews">Reviews</a>
+              <a href="#areas">Areas We Serve</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </div>
+          <div>
+            <strong>Service Areas</strong>
+            <p class="footer-area-list">Sandton · Randburg · Midrand · Fourways · Rosebank · Bryanston · Johannesburg South</p>
+          </div>
+          <div>
+            <strong>Follow Us</strong>
+            <!-- Replace social links in script.js BUSINESS_CONFIG.socialLinks -->
+            <div class="footer-socials">
+              <a data-link="facebook" href="#" target="_blank" rel="noreferrer">Facebook</a>
+              <a data-link="instagram" href="#" target="_blank" rel="noreferrer">Instagram</a>
+              <a data-link="linkedin" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© <span id="currentYear"></span> <span data-config="businessName">Fix-It Crew</span>. All rights reserved.</span>
+        <span>Johannesburg maintenance and construction support.</span>
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260515-1455"></script>
   </body>
 </html>
