@@ -1,7 +1,7 @@
 const BUSINESS_CONFIG = {
   businessName: 'Fix-It Crew',
   contactPerson: 'Naeem',
-  tagline: 'Electrical, Solar, Plumbing, Painting & Maintenance',
+  tagline: 'Electrical, Solar, Plumbing, Painting, Building & Maintenance',
   phoneRaw: '+27845159226',
   phoneDisplay: '084 515 9226',
   whatsAppNumber: '27845159226',
