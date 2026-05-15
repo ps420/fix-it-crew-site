@@ -24,6 +24,7 @@ body {
     radial-gradient(circle at top left, rgba(55, 87, 164, 0.12), transparent 22%),
     linear-gradient(180deg, #050912 0%, #091326 40%, #070c16 100%);
   color: var(--text);
+  overflow-x: hidden;
 }
 img { max-width: 100%; display: block; }
 .container { width: min(1160px, calc(100% - 2rem)); margin: 0 auto; }
@@ -244,6 +245,7 @@ input.invalid, select.invalid, textarea.invalid { border-color: #d92d20; backgro
   .hero-trust-stats, .footer-columns { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 760px) {
+  .container { width: min(100% - 1.25rem, 1160px); }
   .site-nav { position: absolute; left: 1rem; right: 1rem; top: calc(100% + 0.5rem); background: rgba(7, 12, 22, 0.97); border: 1px solid var(--line); border-radius: 18px; padding: 1rem; flex-direction: column; display: none; }
   .site-nav.open { display: flex; }
   .nav-toggle { display: block; }
@@ -252,12 +254,50 @@ input.invalid, select.invalid, textarea.invalid { border-color: #d92d20; backgro
   .footer-columns, .hero-trust-stats, .gallery-card-large, .gallery-card-wide, .footer-bottom { grid-template-columns: 1fr; display: grid; }
   .contact-actions, .hero-contact-strip { flex-direction: column; }
   .contact-actions .btn, .hero-actions .btn, .hero-contact-strip a { width: 100%; }
+  .hero-actions { gap: 0.75rem; }
+  .hero-contact-strip { gap: 0.65rem; }
+  .hero-trust-stats { gap: 0.75rem; }
+  .trust-badges { gap: 0.55rem; }
+  .trust-badges span, .areas-grid span { width: 100%; justify-content: flex-start; }
+  .stat-row { flex-direction: column; gap: 0.75rem; }
+  .quote-form, .service-card, .review-card, .gallery-card, .contact-card, .mini-card, .why-card { padding: 1.15rem; }
   .mobile-call { display: inline-flex; }
   .floating-whatsapp { bottom: 4.8rem; }
   .hero { padding-top: 4rem; padding-bottom: 3rem; }
+  .section { padding: 4.25rem 0; }
+  .section-compact { padding: 3.2rem 0; }
   .hero h1 { max-width: none; }
   .project-placeholder, .glass-card { position: relative; width: 100%; }
   .hero-visual { display: grid; gap: 1rem; min-height: auto; }
   .hero-orbit { display: none; }
   .hero-bg-grid { inset: 0; }
+}
+@media (max-width: 520px) {
+  .container { width: calc(100% - 1rem); }
+  .brand { gap: 0.65rem; padding-right: 0.45rem; }
+  .brand strong { font-size: 0.95rem; }
+  .brand small { font-size: 0.68rem; }
+  .brand-mark, .brand-mark svg { width: 46px; height: 46px; }
+  .nav-wrap { padding: 0.8rem 0; }
+  .hero { padding-top: 3.35rem; }
+  .hero h1 { font-size: clamp(2rem, 9vw, 2.8rem); line-height: 1.05; }
+  .hero-text { font-size: 0.98rem; }
+  .eyebrow { font-size: 0.69rem; letter-spacing: 0.14em; }
+  .btn { min-height: 50px; padding: 0.85rem 1rem; }
+  .hero-points { gap: 0.65rem; font-size: 0.95rem; }
+  .hero-trust-stats div { padding: 0.9rem; }
+  .service-icon, .icon-badge { width: 46px; height: 46px; margin-bottom: 0.85rem; }
+  .service-icon svg { width: 22px; height: 22px; }
+  .image-placeholder { min-height: 150px; }
+  .before-box, .after-box { min-height: 130px; }
+  .contact-copy p, .about-copy p, .section-head p, .service-card p, .review-card p { font-size: 0.96rem; }
+  .site-footer { padding-bottom: 6.5rem; }
+  .footer-links, .footer-socials { gap: 0.55rem; }
+  .floating-whatsapp, .mobile-call {
+    padding: 0.82rem 0.95rem;
+    font-size: 0.92rem;
+    bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  .floating-whatsapp { right: 0.75rem; bottom: max(4.5rem, calc(env(safe-area-inset-bottom) + 4.5rem)); }
+  .mobile-call { left: 0.75rem; }
 }
