@@ -1,12 +1,13 @@
 const BUSINESS_CONFIG = {
   // Replace business details here
-  businessName: 'Fix-It Crew', // Replace business name here
+  businessName: 'Fix-It Crew',
+  tagline: 'Premium Maintenance & Construction',
   phoneRaw: '+27XXXXXXXXX', // Replace with real phone number for click-to-call
   phoneDisplay: '+27 XX XXX XXXX', // Replace with real visible phone number
   whatsAppNumber: '27XXXXXXXXX', // Replace with real WhatsApp number, numbers only
   whatsAppDisplay: '+27 XX XXX XXXX', // Replace with real visible WhatsApp number
   email: 'info@fixitcrew.co.za', // Replace with real email address
-  serviceArea: 'Johannesburg and surrounding areas', // Replace if needed
+  serviceArea: 'Johannesburg and surrounding areas',
   serviceAreaShort: 'Johannesburg',
   businessHours: 'Mon - Sat: 7:00 AM - 6:00 PM<br />Emergency call-outs available',
   businessHoursText: 'Mon - Sat: 7:00 AM - 6:00 PM',
@@ -21,7 +22,11 @@ const BUSINESS_CONFIG = {
 const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.site-nav');
 const navLinks = document.querySelectorAll('.site-nav a');
-const sectionLinks = new Map();
+const revealItems = document.querySelectorAll('.reveal');
+const quoteForm = document.querySelector('#quoteForm');
+const whatsAppQuoteLink = document.querySelector('#whatsAppQuoteLink');
+const emailQuoteLink = document.querySelector('#emailQuoteLink');
+const formStatus = document.querySelector('#formStatus');
 
 if (navToggle && nav) {
   navToggle.addEventListener('click', () => {
@@ -38,29 +43,25 @@ if (navToggle && nav) {
 }
 
 function applyBusinessConfig() {
-  document.querySelectorAll('[data-config="businessName"]').forEach((node) => {
-    node.textContent = BUSINESS_CONFIG.businessName;
+  const textBindings = {
+    businessName: BUSINESS_CONFIG.businessName,
+    tagline: BUSINESS_CONFIG.tagline,
+    phoneDisplay: BUSINESS_CONFIG.phoneDisplay,
+    whatsAppDisplay: BUSINESS_CONFIG.whatsAppDisplay,
+    email: BUSINESS_CONFIG.email,
+    serviceArea: BUSINESS_CONFIG.serviceArea,
+    serviceAreaShort: BUSINESS_CONFIG.serviceAreaShort,
+    businessHoursText: BUSINESS_CONFIG.businessHoursText,
+  };
+
+  Object.entries(textBindings).forEach(([key, value]) => {
+    document.querySelectorAll(`[data-config="${key}"]`).forEach((node) => {
+      node.textContent = value;
+    });
   });
-  document.querySelectorAll('[data-config="phoneDisplay"]').forEach((node) => {
-    node.textContent = BUSINESS_CONFIG.phoneDisplay;
-  });
-  document.querySelectorAll('[data-config="whatsAppDisplay"]').forEach((node) => {
-    node.textContent = BUSINESS_CONFIG.whatsAppDisplay;
-  });
-  document.querySelectorAll('[data-config="email"]').forEach((node) => {
-    node.textContent = BUSINESS_CONFIG.email;
-  });
-  document.querySelectorAll('[data-config="serviceArea"]').forEach((node) => {
-    node.textContent = BUSINESS_CONFIG.serviceArea;
-  });
-  document.querySelectorAll('[data-config="serviceAreaShort"]').forEach((node) => {
-    node.textContent = BUSINESS_CONFIG.serviceAreaShort;
-  });
+
   document.querySelectorAll('[data-config="businessHours"]').forEach((node) => {
     node.innerHTML = BUSINESS_CONFIG.businessHours;
-  });
-  document.querySelectorAll('[data-config="businessHoursText"]').forEach((node) => {
-    node.textContent = BUSINESS_CONFIG.businessHoursText;
   });
 
   document.querySelectorAll('[data-link="phone"]').forEach((node) => {
@@ -83,48 +84,56 @@ function applyBusinessConfig() {
 }
 
 function setActiveNav() {
-  const sections = Array.from(document.querySelectorAll('main section[id]'));
-  if (!sections.length || !navLinks.length) return;
+  if (!navLinks.length) return;
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
 
   navLinks.forEach((link) => {
-    const id = link.getAttribute('href')?.replace('#', '');
-    if (id) sectionLinks.set(id, link);
+    const href = link.getAttribute('href') || '';
+    const normalized = href === './' ? 'index.html' : href.split('#')[0] || currentPath;
+    const isIndexAnchor = currentPath === 'index.html' && href.startsWith('#');
+    const isCurrent = normalized === currentPath || (currentPath === '' && normalized === 'index.html') || isIndexAnchor;
+    if (isCurrent) link.classList.add('active');
   });
 
-  const sectionObserver = new IntersectionObserver(
+  const sections = Array.from(document.querySelectorAll('main section[id]'));
+  const sectionMap = new Map();
+  navLinks.forEach((link) => {
+    const href = link.getAttribute('href') || '';
+    if (href.startsWith('#')) sectionMap.set(href.replace('#', ''), link);
+  });
+
+  if (!sections.length || !sectionMap.size) return;
+
+  const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        navLinks.forEach((link) => link.classList.remove('active'));
-        const activeLink = sectionLinks.get(entry.target.id);
+        sectionMap.forEach((link) => link.classList.remove('active'));
+        const activeLink = sectionMap.get(entry.target.id);
         if (activeLink) activeLink.classList.add('active');
       });
     },
-    { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 }
+    { rootMargin: '-35% 0px -50% 0px', threshold: 0.05 }
   );
 
-  sections.forEach((section) => sectionObserver.observe(section));
+  sections.forEach((section) => observer.observe(section));
 }
 
-const revealItems = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.15 }
-);
+if (revealItems.length) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.14 }
+  );
 
-revealItems.forEach((item) => observer.observe(item));
-
-const quoteForm = document.querySelector('#quoteForm');
-const whatsAppQuoteLink = document.querySelector('#whatsAppQuoteLink');
-const emailQuoteLink = document.querySelector('#emailQuoteLink');
-const formStatus = document.querySelector('#formStatus');
+  revealItems.forEach((item) => revealObserver.observe(item));
+}
 
 function formValue(form, name) {
   return String(new FormData(form).get(name) || '').trim();
@@ -185,7 +194,6 @@ function setFieldError(name, message) {
 function validateForm(form) {
   clearFieldErrors();
   const errors = {};
-
   const fullName = formValue(form, 'fullName');
   const phone = formValue(form, 'phone');
   const email = formValue(form, 'email');
@@ -207,21 +215,15 @@ function validateForm(form) {
 }
 
 function syncLinks() {
-  if (quoteForm && whatsAppQuoteLink) {
-    whatsAppQuoteLink.href = buildWhatsAppUrl(quoteForm);
-  }
-  if (quoteForm && emailQuoteLink) {
-    emailQuoteLink.href = buildMailtoUrl(quoteForm);
-  }
+  if (quoteForm && whatsAppQuoteLink) whatsAppQuoteLink.href = buildWhatsAppUrl(quoteForm);
+  if (quoteForm && emailQuoteLink) emailQuoteLink.href = buildMailtoUrl(quoteForm);
 }
 
 applyBusinessConfig();
 setActiveNav();
 
 const currentYear = document.querySelector('#currentYear');
-if (currentYear) {
-  currentYear.textContent = String(new Date().getFullYear());
-}
+if (currentYear) currentYear.textContent = String(new Date().getFullYear());
 
 if (quoteForm && whatsAppQuoteLink && emailQuoteLink) {
   quoteForm.addEventListener('input', syncLinks);
@@ -231,7 +233,6 @@ if (quoteForm && whatsAppQuoteLink && emailQuoteLink) {
   quoteForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const errors = validateForm(quoteForm);
-
     if (Object.keys(errors).length > 0) {
       showStatus('Please fix the highlighted fields before sending your quote request.', 'error');
       return;
@@ -239,9 +240,8 @@ if (quoteForm && whatsAppQuoteLink && emailQuoteLink) {
 
     syncLinks();
     showStatus('Quote request ready — opening WhatsApp now with your prefilled message.', 'success');
-
     setTimeout(() => {
       window.open(buildWhatsAppUrl(quoteForm), '_blank', 'noopener,noreferrer');
-    }, 500);
+    }, 450);
   });
 }
