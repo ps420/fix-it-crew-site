@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+<defs>
+<linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#07101d"/>
+<stop offset="100%" stop-color="#13233d"/>
+</linearGradient>
+<linearGradient id="gold" x1="10%" y1="8%" x2="88%" y2="92%">
+<stop offset="0%" stop-color="#f6d488"/>
+<stop offset="52%" stop-color="#d29e3f"/>
+<stop offset="100%" stop-color="#9b6b22"/>
+</linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<circle cx="940" cy="120" r="200" fill="rgba(246,212,136,0.10)"/>
+<circle cx="220" cy="520" r="240" fill="rgba(255,255,255,0.04)"/>
+<image href="assets/brand/logo-horizontal.svg" x="110" y="110" width="620" height="158"/>
+<text x="110" y="350" fill="#f6f2ea" font-family="Manrope, Inter, Arial, sans-serif" font-size="58" font-weight="800">Johannesburg Property Services</text>
+<text x="110" y="420" fill="#d3dceb" font-family="Manrope, Inter, Arial, sans-serif" font-size="30">Electrical • Solar • Plumbing • Painting • Building • General Maintenance</text>
+<text x="110" y="490" fill="#d7b56f" font-family="Manrope, Inter, Arial, sans-serif" font-size="28" font-weight="700">Professional workmanship. Reliable service.</text>
+<rect x="110" y="526" width="400" height="3" rx="2" fill="url(#gold)" opacity="0.8"/>
+</svg>

@@ -101,11 +101,7 @@ function applyBusinessConfig() {
       option.textContent = service;
       serviceSelect.appendChild(option);
     });
-    const extraOption = document.createElement('option');
-    extraOption.value = 'Other / multiple services';
-    extraOption.textContent = 'Other / multiple services';
-    serviceSelect.appendChild(extraOption);
-    serviceSelect.dataset.enhanced = 'true';
+      serviceSelect.dataset.enhanced = 'true';
   }
 }
 

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 132" role="img" aria-labelledby="title desc">
+<title id="title">Fix-It Crew horizontal logo</title>
+<desc id="desc">Horizontal Fix-It Crew logo with icon and wordmark.</desc>
+<defs>
+<linearGradient id="gold" x1="10%" y1="8%" x2="88%" y2="92%">
+<stop offset="0%" stop-color="#f6d488"/>
+<stop offset="52%" stop-color="#d29e3f"/>
+<stop offset="100%" stop-color="#9b6b22"/>
+</linearGradient>
+<linearGradient id="navy" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#11213a"/>
+<stop offset="100%" stop-color="#040a14"/>
+</linearGradient>
+</defs>
+<rect x="10" y="10" width="112" height="112" rx="32" fill="#f7f2ea"/>
+<rect x="16" y="16" width="100" height="100" rx="28" fill="url(#navy)" stroke="url(#gold)" stroke-width="3.6"/>
+<path d="M41 38h33c9 0 15.8 6.4 15.8 14.7 0 6-3.7 10.6-9.2 12.7 5.9 1.5 10.2 6.7 10.2 13.8 0 9.6-7.8 16-18.8 16H41zm15.2 13.9v10.2H72c3.4 0 5.8-2 5.8-5.1 0-3-2.4-5.1-5.8-5.1zm0 22.8v11h17.6c4 0 6.8-2.3 6.8-5.7 0-3.8-2.8-6-6.8-6z" fill="url(#gold)"/>
+<path d="M36 96h60" stroke="url(#gold)" stroke-width="4.3" stroke-linecap="round" opacity="0.96"/>
+<g fill="#f7f3eb">
+<text x="148" y="60" font-size="40" font-weight="800" font-family="Manrope, Inter, Arial, sans-serif" letter-spacing="0.5">Fix-It Crew</text>
+<text x="148" y="92" font-size="17" font-weight="700" font-family="Manrope, Inter, Arial, sans-serif" fill="#d5b16b" letter-spacing="1.2">PROFESSIONAL WORKMANSHIP. RELIABLE SERVICE.</text>
+</g>
+</svg>

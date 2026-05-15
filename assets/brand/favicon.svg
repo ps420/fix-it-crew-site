@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
-  <title id="title">Fix-It Crew brand mark</title>
-  <desc id="desc">Premium navy and gold monogram mark for Fix-It Crew.</desc>
-  <defs>
-    <linearGradient id="gold" x1="12%" y1="8%" x2="88%" y2="92%">
-      <stop offset="0%" stop-color="#f7d88d"/>
-      <stop offset="52%" stop-color="#d3a548"/>
-      <stop offset="100%" stop-color="#9d6d1c"/>
-    </linearGradient>
-    <linearGradient id="navy" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0d1933"/>
-      <stop offset="100%" stop-color="#040a14"/>
-    </linearGradient>
-  </defs>
-  <rect x="8" y="8" width="112" height="112" rx="30" fill="#f6f1e7"/>
-  <rect x="14" y="14" width="100" height="100" rx="26" fill="url(#navy)" stroke="url(#gold)" stroke-width="3.5"/>
-  <path d="M39 36h34c9 0 16 6.5 16 14.5 0 6.2-3.9 10.9-9.6 13 5.5 1.5 9.6 6.4 9.6 13.3 0 9-7.2 15.2-17.8 15.2H39zm15.4 13.3v9.8h16.6c3.2 0 5.6-1.8 5.6-4.8s-2.4-5-5.6-5zm0 22.2v11.4h18.3c3.8 0 6.5-2.3 6.5-5.6 0-3.7-2.6-5.8-6.5-5.8z" fill="url(#gold)"/>
-  <path d="M34 96h60" stroke="url(#gold)" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+<title id="title">Fix-It Crew icon logo</title>
+<desc id="desc">Fix-It Crew monogram brand mark in navy and gold.</desc>
+<defs>
+<linearGradient id="gold" x1="10%" y1="8%" x2="88%" y2="92%">
+<stop offset="0%" stop-color="#f6d488"/>
+<stop offset="52%" stop-color="#d29e3f"/>
+<stop offset="100%" stop-color="#9b6b22"/>
+</linearGradient>
+<linearGradient id="navy" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#11213a"/>
+<stop offset="100%" stop-color="#040a14"/>
+</linearGradient>
+</defs>
+<rect x="10" y="10" width="108" height="108" rx="30" fill="#f7f2ea"/>
+<rect x="16" y="16" width="96" height="96" rx="26" fill="url(#navy)" stroke="url(#gold)" stroke-width="3.5"/>
+<path d="M40 37h31.5c8.8 0 15.5 6.2 15.5 14.3 0 5.8-3.5 10.2-8.9 12.2 5.8 1.6 10 6.6 10 13.4 0 9.5-7.7 15.8-18.7 15.8H40zm14.4 13.6v10h15.4c3.2 0 5.6-1.9 5.6-4.9s-2.4-5.1-5.6-5.1zm0 22.5V84h17.3c3.9 0 6.6-2.2 6.6-5.5 0-3.7-2.7-5.9-6.6-5.9z" fill="url(#gold)"/>
+<path d="M35 94h58" stroke="url(#gold)" stroke-width="4.2" stroke-linecap="round" opacity="0.95"/>
 </svg>
