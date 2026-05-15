@@ -1,21 +1,23 @@
 const BUSINESS_CONFIG = {
-  // Replace business details here
   businessName: 'Fix-It Crew',
-  tagline: 'Premium Maintenance & Construction',
-  phoneRaw: '+27XXXXXXXXX', // Replace with real phone number for click-to-call
-  phoneDisplay: '+27 XX XXX XXXX', // Replace with real visible phone number
-  whatsAppNumber: '27XXXXXXXXX', // Replace with real WhatsApp number, numbers only
-  whatsAppDisplay: '+27 XX XXX XXXX', // Replace with real visible WhatsApp number
-  email: 'info@fixitcrew.co.za', // Replace with real email address
-  serviceArea: 'Johannesburg and surrounding areas',
+  contactPerson: 'Naeem',
+  tagline: 'Electrical, Solar, Plumbing, Painting & Maintenance',
+  phoneRaw: '+27845159226',
+  phoneDisplay: '084 515 9226',
+  whatsAppNumber: '27845159226',
+  whatsAppDisplay: '084 515 9226',
+  email: '',
+  serviceArea: 'Johannesburg, South Africa',
   serviceAreaShort: 'Johannesburg',
-  businessHours: 'Mon - Sat: 7:00 AM - 6:00 PM<br />Emergency call-outs available',
+  businessHours: 'Mon - Sat: 7:00 AM - 6:00 PM<br />WhatsApp quote support available',
   businessHoursText: 'Mon - Sat: 7:00 AM - 6:00 PM',
-  googleMapsUrl: 'https://maps.google.com/?q=Johannesburg', // Replace with your real map pin/link
+  googleMapsUrl: 'https://maps.google.com/?q=Johannesburg,+South+Africa',
+  localAreas: ['Sandton', 'Randburg', 'Midrand', 'Fourways', 'Rosebank', 'Bryanston', 'Johannesburg South'],
+  coreServices: ['Electrical', 'Solar', 'Plumbing', 'Painting', 'Building', 'General Maintenance'],
   socialLinks: {
-    facebook: '#', // Replace social link later
-    instagram: '#', // Replace social link later
-    linkedin: '#', // Replace social link later
+    facebook: '#',
+    instagram: '#',
+    linkedin: '#',
   },
 };
 
@@ -45,6 +47,7 @@ if (navToggle && nav) {
 function applyBusinessConfig() {
   const textBindings = {
     businessName: BUSINESS_CONFIG.businessName,
+    contactPerson: BUSINESS_CONFIG.contactPerson,
     tagline: BUSINESS_CONFIG.tagline,
     phoneDisplay: BUSINESS_CONFIG.phoneDisplay,
     whatsAppDisplay: BUSINESS_CONFIG.whatsAppDisplay,
@@ -52,6 +55,8 @@ function applyBusinessConfig() {
     serviceArea: BUSINESS_CONFIG.serviceArea,
     serviceAreaShort: BUSINESS_CONFIG.serviceAreaShort,
     businessHoursText: BUSINESS_CONFIG.businessHoursText,
+    localAreasInline: BUSINESS_CONFIG.localAreas.join(' · '),
+    coreServicesInline: BUSINESS_CONFIG.coreServices.join(' · '),
   };
 
   Object.entries(textBindings).forEach(([key, value]) => {
@@ -67,9 +72,6 @@ function applyBusinessConfig() {
   document.querySelectorAll('[data-link="phone"]').forEach((node) => {
     node.setAttribute('href', `tel:${BUSINESS_CONFIG.phoneRaw}`);
   });
-  document.querySelectorAll('[data-link="email"]').forEach((node) => {
-    node.setAttribute('href', `mailto:${BUSINESS_CONFIG.email}`);
-  });
   document.querySelectorAll('[data-link="whatsapp"]').forEach((node) => {
     node.setAttribute('href', `https://wa.me/${BUSINESS_CONFIG.whatsAppNumber}`);
   });
@@ -81,6 +83,30 @@ function applyBusinessConfig() {
       node.setAttribute('href', value);
     });
   });
+
+  document.querySelectorAll('[data-hide-if-empty="email"]').forEach((node) => {
+    node.hidden = !BUSINESS_CONFIG.email;
+  });
+  document.querySelectorAll('[data-link="email"]').forEach((node) => {
+    if (BUSINESS_CONFIG.email) {
+      node.setAttribute('href', `mailto:${BUSINESS_CONFIG.email}`);
+    }
+  });
+
+  const serviceSelect = document.querySelector('select[name="service"]');
+  if (serviceSelect && !serviceSelect.dataset.enhanced) {
+    BUSINESS_CONFIG.coreServices.forEach((service) => {
+      const option = document.createElement('option');
+      option.value = service;
+      option.textContent = service;
+      serviceSelect.appendChild(option);
+    });
+    const extraOption = document.createElement('option');
+    extraOption.value = 'Other / multiple services';
+    extraOption.textContent = 'Other / multiple services';
+    serviceSelect.appendChild(extraOption);
+    serviceSelect.dataset.enhanced = 'true';
+  }
 }
 
 function setActiveNav() {
@@ -94,29 +120,6 @@ function setActiveNav() {
     const isCurrent = normalized === currentPath || (currentPath === '' && normalized === 'index.html') || isIndexAnchor;
     if (isCurrent) link.classList.add('active');
   });
-
-  const sections = Array.from(document.querySelectorAll('main section[id]'));
-  const sectionMap = new Map();
-  navLinks.forEach((link) => {
-    const href = link.getAttribute('href') || '';
-    if (href.startsWith('#')) sectionMap.set(href.replace('#', ''), link);
-  });
-
-  if (!sections.length || !sectionMap.size) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        sectionMap.forEach((link) => link.classList.remove('active'));
-        const activeLink = sectionMap.get(entry.target.id);
-        if (activeLink) activeLink.classList.add('active');
-      });
-    },
-    { rootMargin: '-35% 0px -50% 0px', threshold: 0.05 }
-  );
-
-  sections.forEach((section) => observer.observe(section));
 }
 
 if (revealItems.length) {
@@ -148,7 +151,7 @@ function buildQuoteMessage(form) {
   const message = formValue(form, 'message');
 
   return [
-    `Hi ${BUSINESS_CONFIG.businessName}, I would like to request a quote.`,
+    `Hi ${BUSINESS_CONFIG.contactPerson}, I'd like a quote from ${BUSINESS_CONFIG.businessName}.`,
     '',
     `Full name: ${fullName}`,
     `Phone: ${phone}`,
@@ -204,7 +207,7 @@ function validateForm(form) {
   if (!fullName) errors.fullName = 'Please enter your full name.';
   if (!phone) errors.phone = 'Please enter your phone number.';
   if (!service) errors.service = 'Please select the service you need.';
-  if (!location) errors.location = 'Please enter your location/suburb.';
+  if (!location) errors.location = 'Please enter your Johannesburg area/suburb.';
   if (!message) errors.message = 'Please describe the work you need done.';
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     errors.email = 'Please enter a valid email address.';
@@ -216,7 +219,10 @@ function validateForm(form) {
 
 function syncLinks() {
   if (quoteForm && whatsAppQuoteLink) whatsAppQuoteLink.href = buildWhatsAppUrl(quoteForm);
-  if (quoteForm && emailQuoteLink) emailQuoteLink.href = buildMailtoUrl(quoteForm);
+  if (quoteForm && emailQuoteLink) {
+    emailQuoteLink.href = BUSINESS_CONFIG.email ? buildMailtoUrl(quoteForm) : `https://wa.me/${BUSINESS_CONFIG.whatsAppNumber}`;
+    emailQuoteLink.hidden = !BUSINESS_CONFIG.email;
+  }
 }
 
 applyBusinessConfig();
@@ -225,7 +231,7 @@ setActiveNav();
 const currentYear = document.querySelector('#currentYear');
 if (currentYear) currentYear.textContent = String(new Date().getFullYear());
 
-if (quoteForm && whatsAppQuoteLink && emailQuoteLink) {
+if (quoteForm && whatsAppQuoteLink) {
   quoteForm.addEventListener('input', syncLinks);
   quoteForm.addEventListener('change', syncLinks);
   syncLinks();
